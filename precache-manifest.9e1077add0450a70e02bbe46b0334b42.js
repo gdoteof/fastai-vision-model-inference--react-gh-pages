@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/fastai-vision-model-inference--react-gh-pages/static/js/runtime~main.8f2457f2.js"
   },
   {
-    "revision": "c0429f635df02b5c4ea2",
-    "url": "/fastai-vision-model-inference--react-gh-pages/static/js/main.0f256afb.chunk.js"
+    "revision": "0ccb816df4cb24c63917",
+    "url": "/fastai-vision-model-inference--react-gh-pages/static/js/main.01c1a455.chunk.js"
   },
   {
-    "revision": "1e78307ef9f253d3b2b4",
-    "url": "/fastai-vision-model-inference--react-gh-pages/static/js/2.c02a2188.chunk.js"
+    "revision": "87ec00d285eb7fce3156",
+    "url": "/fastai-vision-model-inference--react-gh-pages/static/js/2.870eea52.chunk.js"
   },
   {
-    "revision": "c0429f635df02b5c4ea2",
+    "revision": "0ccb816df4cb24c63917",
     "url": "/fastai-vision-model-inference--react-gh-pages/static/css/main.d924a8fd.chunk.css"
   },
   {
-    "revision": "2580b22e07007f05ec9166eefd8a33a0",
+    "revision": "f9c3f1caeb3ed7fc13c6c9ea69830c1b",
     "url": "/fastai-vision-model-inference--react-gh-pages/index.html"
   }
 ];
