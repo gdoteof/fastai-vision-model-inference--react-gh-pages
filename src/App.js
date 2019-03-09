@@ -6,11 +6,13 @@ import axios from 'axios';
 
 import addcircle from './addcircle.png';
 
-import { createBrowserHistory } from 'history';
+
+import { name as app_name } from '../package.json';
+
 
 import LoadingOverlay from 'react-loading-overlay';
+console.log("Name is ", app_name);
 
-const history = createBrowserHistory();
 
 class ClassifyUrl extends Component {
   constructor(props){
@@ -60,8 +62,7 @@ class ClassifyUrl extends Component {
   
 
   handleClassify(){
-    //const base = 'https://dsm.just-minimalism.com/classify-url';
-    const base = 'http://138.197.227.42/classify-url';
+    const base = 'https://dsm.just-minimalism.com/classify-url';
     const params = '?url=' + encodeURIComponent(this.state.classifyImg);
     this.toggleOverlay();
     this.toggleSpinner();
@@ -181,10 +182,9 @@ class App extends Component {
       verifyImg: val,
     }))
   }
-
   render() {
     return (
-      <Router history={history}>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="app-container">
           <Route path="/" exact component={Home} />
           <Route path="/verify-url" exact render={(props) => 
