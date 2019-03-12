@@ -25,9 +25,6 @@
   color: white;
 }
 
-.App-button-link {
-  width: 25%;
-}
 
 .App-text-input {
   padding: .4em;
@@ -83,6 +80,19 @@ body{
   margin-right: 10vw;
   padding-top: 10vh;
   padding-bottom: 10vh;
+}
+
+.App-link-button{
+  display: flex;
+  justify-content: center;
+  color: #61dafb;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid lavender;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  margin-bottom: 3vh;
+  font-size: calc(10px + 3vmin);
 }
 
 

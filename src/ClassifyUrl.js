@@ -115,15 +115,15 @@ class ClassifyUrl extends Component {
       >
         <div className="App-header">
           <div className="App-page">
-            <img src={this.props.classifyImg} className="App-preview-img" alt=""/>
-            <Link className="App-button-link" to="/classify" >
-              <button className="App-button" onClick={this.handleClassify} disabled={!this.state.enableClassify}>
-                Classify..
-              </button>
-            </Link>
-            <Link to="/" className="App-back-link">Back</Link>
+            <div className="App-panel">
+              <img src={this.props.classifyImg} className="App-preview-img" alt=""/>
+              <Link className="App-link-button" to="/classify" onClick={this.handleClassify} >
+                  Classify
+              </Link>
+            </div>
           </div>
         </div>
+        <Link to="/" className="App-back-link">Back</Link>
       </LoadingOverlay>
     )
   }
