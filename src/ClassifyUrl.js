@@ -63,8 +63,8 @@ class ClassifyUrl extends Component {
 	}
 
  	doPostCallback(){
-    //const base = 'https://dsm.just-minimalism.com/classify-url';
-    const base = 'http://138.197.227.42/classify-url';
+    const base = 'https://dsm.just-minimalism.com/classify-url';
+    //const base = 'http://138.197.227.42/classify-url';
 			fetch(base, {
 			  method: "POST",
 			  body: this.props.imgBlob
