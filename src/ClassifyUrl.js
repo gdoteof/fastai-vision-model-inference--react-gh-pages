@@ -24,12 +24,10 @@ class ClassifyUrl extends Component {
   }
 
   exampleMapping(data){
-    console.log("inside exampleMapping-->", data,data);
-    console.log("<--inside exampleMapping");
     const dict = {
       animal: "This is an animal mouse!",
       computer: "This is a computer mouse!",
-      micky: "This is micky mouse (and disney just made a dollar).",
+      mickey: "This is mickey mouse",
     }
     return dict[data.predictions[0][0]];
   }
@@ -97,7 +95,7 @@ class ClassifyUrl extends Component {
     const params = '?url=' + encodeURIComponent(this.state.classifyImg);
     axios.get(base + params)
       .then((response) => {
-          console.log(response);
+          console.log('ABOUT TO SET STATE', response);
           this.setState({ 
             overlayText: this.exampleMapping(response.data),
             enableClassify: false
@@ -116,13 +114,15 @@ class ClassifyUrl extends Component {
         onClick={this.handleClick}
       >
         <div className="App-header">
-          <img src={this.props.classifyImg} className="App-logo" alt=""/>
-          <Link className="App-button-link" to="/classify" >
-            <button className="App-button" onClick={this.handleClassify} disabled={!this.state.enableClassify}>
-              Classify..
-            </button>
-          </Link>
-          <Link to="/" className="App-back-link">Back</Link>
+          <div className="App-page">
+            <img src={this.props.classifyImg} className="App-preview-img" alt=""/>
+            <Link className="App-button-link" to="/classify" >
+              <button className="App-button" onClick={this.handleClassify} disabled={!this.state.enableClassify}>
+                Classify..
+              </button>
+            </Link>
+            <Link to="/" className="App-back-link">Back</Link>
+          </div>
         </div>
       </LoadingOverlay>
     )

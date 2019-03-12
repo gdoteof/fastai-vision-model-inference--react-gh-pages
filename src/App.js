@@ -21,6 +21,8 @@ class VerifyUrl extends Component {
     this.state = { 
       x : addcircle,
       imgSrc : '',
+      displayImg: false,
+      enableNext: false
     }
 
   }
@@ -29,13 +31,15 @@ class VerifyUrl extends Component {
     console.log("IN VERIFY RENDER WITH", this.props);
     return (
       <div className="App-header">
-        <img src={this.props.imgSrcClean} className="App-logo"  onError={this.props.handleError} alt=""/>
-        <input type="text" value={this.props.imgSrcRaw} className="App-text-input" onChange={this.props.handleChange}/>
-        <Link className="App-button-link" to="/classify" >
-          <button className="App-button">
-            Next
-          </button>
-        </Link>
+        <div className="App-page">
+          <img src={this.props.imgSrcClean} className="App-preview-img"  onError={this.props.handleError} onLoad={()=> this.setState({enableNext:true})} alt=""/> 
+          <input type="text" value={this.props.imgSrcRaw} className="App-text-input" onChange={this.props.handleChange} placeholder="Paste a URL"/>
+          <Link className="App-button-link" to="/classify" >
+            <button className="App-button" disabled={!this.state.enableNext}>
+              Next
+            </button>
+          </Link>
+        </div>
       </div>
     )
   }
@@ -75,19 +79,23 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Link
-            className="App-link"
-            to="/verify-url"
-          >
-            Enter Url
-          </Link>
-          <p>
-            Or
-          </p>
-          <div id="input-hider">
-            <input type="file" onChange={this.onChange} id={this.imgId} accept="image/*"/>
+          <div className="App-panel">
+            <Link
+              className="App-link"
+              to="/verify-url"
+            >
+              Enter Url
+            </Link>
           </div>
-          <div className="App-link" onClick={()=>document.getElementById(this.imgId).click()}>Upload file / Take photo</div>
+            <p>
+              Or
+            </p>
+          <div className="App-panel">
+            <div id="input-hider">
+              <input type="file" onChange={this.onChange} id={this.imgId} accept="image/*"/>
+            </div>
+            <div className="App-link" onClick={()=>document.getElementById(this.imgId).click()}>Upload file / Take photo</div>
+          </div>
         </header>
       </div>
     );
