@@ -11,7 +11,7 @@ class ClassifyUrl extends Component {
     this.state = { 
       overlayActive: false,
       overlaySpinnerActive: false,
-      overlayText:"Loading..",
+      overlayText:"Waiting for model on remote server to answer...",
       getApiUrl: props.getApiUrl || 'https://dsm.just-minimalism.com/classify-url',
       classifyImg: props.classifyImg,
       enableClassify: true,
@@ -74,7 +74,8 @@ class ClassifyUrl extends Component {
           console.log("inside the object parse", obj);
           this.setState({ 
             overlayText: this.exampleMapping(obj),
-            enableClassify: false
+            enableClassify: false,
+            overlayActive: true
           });
           this.toggleSpinner();
 				})

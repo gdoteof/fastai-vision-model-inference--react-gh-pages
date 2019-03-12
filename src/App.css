@@ -96,6 +96,11 @@ body{
 }
 
 
+#app-info{
+  color: lavender;
+  font-size: .7em;
+}
+
 #input-hider{
   width: 0px; 
   height: 0px; 

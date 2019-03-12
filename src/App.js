@@ -114,6 +114,10 @@ class App extends Component {
                 imgBlob={this.state.imgBlob}
               />
           }/>
+          <div id="app-info">
+            <p>ZZGITHASHZZ</p>
+            <p>ZZGITDESCZZ</p>
+          </div>
         </div>
       </Router>
     )
