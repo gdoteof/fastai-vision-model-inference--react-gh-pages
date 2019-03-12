@@ -53,7 +53,7 @@ class ClassifyUrl extends Component {
   handleClassify(){
     this.toggleOverlay();
     this.toggleSpinner();
-    this.setState({ overlayText: 'Loading..'});
+    this.setState({ overlayText: 'Classifying image'});
 
     if(this.props.uploaded){
       this.doPostCallback();

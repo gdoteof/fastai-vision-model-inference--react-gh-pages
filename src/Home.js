@@ -11,7 +11,7 @@ class Home extends Component {
       this.state = {
         overlayActive: false,
         overlaySpinnerActive: false,
-        overlayText:"Loading..",
+        overlayText:"",
       }
 
       this.imgId = 'ah3bd9-inputfile';
@@ -42,6 +42,11 @@ class Home extends Component {
 
     if (file){
       reader.readAsDataURL(file);
+      this.setState({
+          overlayActive: true,
+          overlaySpinnerActive: true,
+          overlayText:"Accessing Image...",
+      })
     }
 
   }
@@ -73,7 +78,7 @@ class Home extends Component {
               <div id="input-hider">
                 <input type="file" onChange={this.onChange} id={this.imgId} accept="image/*"/>
               </div>
-              <div className="App-link" onClick={()=>document.getElementById(this.imgId).click()}>Upload file / Take photo</div>
+              <div className="App-link" onClick={()=>document.getElementById(this.imgId).click()}>Upload file / Take photo {this.state.overlayText}</div>
             </div>
           </header>
         </div>
