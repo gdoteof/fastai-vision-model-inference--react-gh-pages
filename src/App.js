@@ -25,20 +25,23 @@ class VerifyUrl extends Component {
       enableNext: false
     }
 
+      this.handlePaste = this.handlePaste.bind(this);
   }
 
+  handlePaste(e,v){
+    console.log("OP", e.clipboardData);
+    console.log("--2", e.clipboardData.getData('Text'));
+    const pastedUrl = e.clipboardData.getData('Text');
+    this.props.bubble('verifyImg', pastedUrl);
+    this.props.history.push('/classify');
+  }
+
+  //<img src={this.props.imgSrcClean} className="App-preview-img"  onError={this.props.handleError} onLoad={()=> this.setState({enableNext:true})} alt=""/> 
   render() {
-    console.log("IN VERIFY RENDER WITH", this.props);
     return (
       <div className="App-header">
         <div className="App-page">
-          <img src={this.props.imgSrcClean} className="App-preview-img"  onError={this.props.handleError} onLoad={()=> this.setState({enableNext:true})} alt=""/> 
-          <input type="text" value={this.props.imgSrcRaw} className="App-text-input" onChange={this.props.handleChange} placeholder="Paste a URL"/>
-          <Link className="App-button-link" to="/classify" >
-            <button className="App-button" disabled={!this.state.enableNext}>
-              Next
-            </button>
-          </Link>
+          <input type="text" value={this.props.imgSrcRaw} className="App-text-input" onChange={this.props.handleChange} placeholder="Paste a URL" onPaste={this.handlePaste}/>
         </div>
       </div>
     )
@@ -149,11 +152,13 @@ class App extends Component {
           } />
           <Route path="/verify-url" exact render={(props) => 
               <VerifyUrl 
+                {...props}
                 classifyImg={this.state.classifyImg}
                 handleChange={this.handleChange} 
                 handleError={this.handleError} 
                 imgSrcRaw={this.state.verifyImgUrl}
                 imgSrcClean={this.state.verifyImg}
+                bubble={this.bubble}
               />
           }/>
           <Route path="/classify" exact render={(props) => 
