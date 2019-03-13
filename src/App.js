@@ -11,15 +11,11 @@ import ClassifyUrl from './ClassifyUrl'
 import Home from './Home'
 
 import GitHash from './GitHash'
-
-
-console.log("Name is ", app_name);
-
+import UrlChooser from './UrlChooser'
 
 class VerifyUrl extends Component {
   constructor(props){
     super(props);
-    console.log("we are in the component");
     this.state = { 
       imgSrc : '',
       displayImg: false,
@@ -30,8 +26,6 @@ class VerifyUrl extends Component {
   }
 
   handlePaste(e,v){
-    console.log("OP", e.clipboardData);
-    console.log("--2", e.clipboardData.getData('Text'));
     const pastedUrl = e.clipboardData.getData('Text');
     this.props.bubble('verifyImg', pastedUrl);
     this.props.history.push('/classify');
@@ -60,6 +54,7 @@ class App extends Component {
       validImg: false,
       uploaded: false,
       imgBlob: null,
+      baseUrl:'https://dsm.just-minimalism.com'
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -109,9 +104,15 @@ class App extends Component {
                 handleSubmit={this.handleSubmit} 
                 uploaded={this.state.uploaded}
                 imgBlob={this.state.imgBlob}
+                baseUrl={this.state.baseUrl}
               />
           }/>
           <GitHash/>
+          <UrlChooser
+            bubble={this.bubble}
+            baseUrl={this.state.baseUrl}
+          />
+          />
         </div>
       </Router>
     )

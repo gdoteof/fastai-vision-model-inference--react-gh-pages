@@ -6,7 +6,6 @@ import LoadingOverlay from 'react-loading-overlay';
 
 class ClassifyUrl extends Component {
   constructor(props){
-    console.log("ccc props", props);
     super(props);
     this.state = { 
       overlayActive: false,
@@ -64,14 +63,12 @@ class ClassifyUrl extends Component {
 
  	doPostCallback(){
     //const base = 'https://dsm.just-minimalism.com/classify-url';
-    const base = 'http://138.197.227.42/classify-url';
-			fetch(base, {
+    //const base = 'http://138.197.227.42/classify-url';
+      fetch(this.props.baseUrl + '/classify-url', {
 			  method: "POST",
 			  body: this.props.imgBlob
 			}).then(res => {
-        console.log("inside the yes", res);
 				return res.json().then(obj=> {
-          console.log("inside the object parse", obj);
           this.setState({ 
             overlayText: this.exampleMapping(obj),
             enableClassify: false,
@@ -80,7 +77,6 @@ class ClassifyUrl extends Component {
           this.toggleSpinner();
 				})
       }).catch(error => {
-        console.log("THEE CATCH", error);
           this.setState({ 
             overlayText: error.message,
             enableClassify: true
@@ -96,7 +92,6 @@ class ClassifyUrl extends Component {
     const params = '?url=' + encodeURIComponent(this.state.classifyImg);
     axios.get(base + params)
       .then((response) => {
-          console.log('ABOUT TO SET STATE', response);
           this.setState({ 
             overlayText: this.exampleMapping(response.data),
             enableClassify: false
