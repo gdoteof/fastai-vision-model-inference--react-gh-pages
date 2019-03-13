@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
 
-import addcircle from './addcircle.png';
 
 
 import { name as app_name } from '../package.json';
 
 import ClassifyUrl from './ClassifyUrl'
 import Home from './Home'
+
+import GitHash from './GitHash'
 
 
 console.log("Name is ", app_name);
@@ -20,7 +21,6 @@ class VerifyUrl extends Component {
     super(props);
     console.log("we are in the component");
     this.state = { 
-      x : addcircle,
       imgSrc : '',
       displayImg: false,
       enableNext: false
@@ -57,7 +57,6 @@ class App extends Component {
     this.state = { 
       classifyImg: '',
       verifyImgUrl: null,
-      verifyImg: addcircle,
       validImg: false,
       uploaded: false,
       imgBlob: null,
@@ -69,14 +68,12 @@ class App extends Component {
   }
 
   bubble(name, val) {
-    console.log("calling set state in bubble with", name, val);
     this.setState(state => (state[name]=val));
   }
 
 
   handleError(event) {
     this.setState(state => ({
-      verifyImg: addcircle
     }))
   }
 
@@ -114,10 +111,7 @@ class App extends Component {
                 imgBlob={this.state.imgBlob}
               />
           }/>
-          <div id="app-info">
-            <p>ZZGITHASHZZ</p>
-            <p>ZZGITDESCZZ</p>
-          </div>
+          <GitHash/>
         </div>
       </Router>
     )
