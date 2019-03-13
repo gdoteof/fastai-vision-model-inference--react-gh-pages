@@ -5,5 +5,5 @@ echo $GITHASH
 echo $GITDESC
 
 
-sed -i "s/ZZGITDESCZZ/$GITDESC/" src/App.js 
-sed -i "s/ZZGITHASHZZ/$GITHASH/" src/App.js 
+sed -i "s/ZZGITDESCZZ/$GITDESC/" src/GitHash.js 
+sed -i "s/ZZGITHASHZZ/$GITHASH/" src/GitHash.js 
