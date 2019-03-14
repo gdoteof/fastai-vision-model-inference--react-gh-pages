@@ -21,7 +21,7 @@ class Home extends Component {
     }
 
     compress(e) {
-        const width = 900;
+        const width = 90;
         const reader = new FileReader();
         const file   = document.getElementById(this.imgId).files[0];
         reader.readAsDataURL(file);
@@ -33,8 +33,10 @@ class Home extends Component {
             img.onload = () => {
                     const elem = document.createElement('canvas');
                     const scaleFactor = width / img.width;
-                    elem.width = width;
-                    elem.height = img.height * scaleFactor;
+                    const cw = width;
+                    const ch = img.height * scaleFactor;
+                    elem.width = cw;
+                    elem.height = ch;
                     const ctx = elem.getContext('2d');
                     // img.width and img.height will contain the original dimensions
                     ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
