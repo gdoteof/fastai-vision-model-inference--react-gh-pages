@@ -38,8 +38,8 @@ class Home extends Component {
                     const ctx = elem.getContext('2d');
                     // img.width and img.height will contain the original dimensions
                     ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
-                    ctx.canvas.toDataURL('image/jpeg');
-                    that.props.bubble('verifyImg', reader.result);
+                    const smaller = ctx.canvas.toDataURL('image/jpeg');
+                    that.props.bubble('verifyImg', smaller);
                     that.props.bubble('uploaded', true);
                     that.props.bubble('imgBlob', file);
                     that.props.history.push('/classify');
@@ -52,33 +52,14 @@ class Home extends Component {
     }
 
     onChange(e){
+      this.setState({
+          gverlayActive: true,
+          overlaySpinnerActive: true,
+          overlayText:"Accessing Image...",
+      })
       this.compress();
     }
 
-  //onChange(e){
-  //  this.setState({
-  //      gverlayActive: true,
-  //      overlaySpinnerActive: true,
-  //      overlayText:"Accessing Image...",
-  //  })
-
-  //  const file   = document.getElementById(this.imgId).files[0];
-  //  const reader = new FileReader();
-
-  //  const that = this;
-  //  reader.onloadend = function(){
-  //  }
-
-  //  if (file){
-  //    reader.readAsDataURL(file);
-  //    this.setState({
-  //        overlayActive: true,
-  //        overlaySpinnerActive: true,
-  //        overlayText:"Accessing Image...",
-  //    })
-  //  }
-
-  //}
 
 
 
