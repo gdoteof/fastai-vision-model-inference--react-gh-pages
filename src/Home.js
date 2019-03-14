@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import LoadingOverlay from 'react-loading-overlay';
 
+
 class Home extends Component {
 
     constructor(props){
@@ -16,40 +17,68 @@ class Home extends Component {
 
       this.imgId = 'ah3bd9-inputfile';
       this.onChange = this.onChange.bind(this);
+      this.compress = this.compress.bind(this);
     }
 
-  onChange(){
-    this.setState({
-        overlayActive: true,
-        overlaySpinnerActive: true,
-        overlayText:"Accessing Image...",
-    })
+    compress(e) {
+        const width = 900;
+        const reader = new FileReader();
+        const file   = document.getElementById(this.imgId).files[0];
+        reader.readAsDataURL(file);
+        reader.onerror = error => console.log(error);
+        const that = this;
+        reader.onload = event => {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = () => {
+                    const elem = document.createElement('canvas');
+                    const scaleFactor = width / img.width;
+                    elem.width = width;
+                    elem.height = img.height * scaleFactor;
+                    const ctx = elem.getContext('2d');
+                    // img.width and img.height will contain the original dimensions
+                    ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
+                    ctx.canvas.toDataURL('image/jpeg');
+                    that.props.bubble('verifyImg', reader.result);
+                    that.props.bubble('uploaded', true);
+                    that.props.bubble('imgBlob', file);
+                    that.props.history.push('/classify');
+                    that.setState({
+                        overlayActive: false,
+                    })
 
-    const file   = document.getElementById(this.imgId).files[0];
-    const reader = new FileReader();
-
-    const that = this;
-    reader.onloadend = function(){
-      that.props.bubble('verifyImg', reader.result);
-      that.props.bubble('uploaded', true);
-      that.props.bubble('imgBlob', file);
-      that.props.history.push('/classify');
-      that.setState({
-          overlayActive: false,
-      })
-
+                }
+        };
     }
 
-    if (file){
-      reader.readAsDataURL(file);
-      this.setState({
-          overlayActive: true,
-          overlaySpinnerActive: true,
-          overlayText:"Accessing Image...",
-      })
+    onChange(e){
+      this.compress();
     }
 
-  }
+  //onChange(e){
+  //  this.setState({
+  //      gverlayActive: true,
+  //      overlaySpinnerActive: true,
+  //      overlayText:"Accessing Image...",
+  //  })
+
+  //  const file   = document.getElementById(this.imgId).files[0];
+  //  const reader = new FileReader();
+
+  //  const that = this;
+  //  reader.onloadend = function(){
+  //  }
+
+  //  if (file){
+  //    reader.readAsDataURL(file);
+  //    this.setState({
+  //        overlayActive: true,
+  //        overlaySpinnerActive: true,
+  //        overlayText:"Accessing Image...",
+  //    })
+  //  }
+
+  //}
 
 
 

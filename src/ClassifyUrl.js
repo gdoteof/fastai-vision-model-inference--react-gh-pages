@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import LoadingOverlay from 'react-loading-overlay';
 
+
 class ClassifyUrl extends Component {
   constructor(props){
     super(props);
@@ -76,9 +77,17 @@ class ClassifyUrl extends Component {
           });
           this.toggleSpinner();
 				})
-      }).catch(error => {
+      }).catch((e1) => {
+        for(var i in e1){
+          console.log("i, e1[i]=====>", i, e1[i]);
+        }
+        const msg = "at:" + e1.lineNumber + "\n"
+                  + "in:" + e1.fileName + "\n"
+                  + "er:" + e1.message;
+        console.log("e1", e1);
+        console.log("e1.stack", e1.stack);
           this.setState({ 
-            overlayText: error.message,
+            overlayText: msg,
             enableClassify: true
           });
           this.toggleSpinner();
@@ -108,6 +117,7 @@ class ClassifyUrl extends Component {
         spinner={this.state.overlaySpinnerActive}
         text={this.state.overlayText}
         onClick={this.handleClick}
+        className="App-overlay"
       >
         <div className="App-header">
           <div className="App-page">
