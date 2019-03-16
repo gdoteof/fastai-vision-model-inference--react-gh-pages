@@ -1,4 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## FARV
+
+Because this needs a name, we are calling it FARV**.  FastAI-React: Vision
+
+This is a companion to https://github.com/gdoteof/fastai-vision-uvicorn-gunicorn-starlette-docker.
+
+You will likely want both of these in conjuction, unless you just want API access to an image classifier.
+
+### About
+
+This repository is a React application with a simple purpose of receiving a single image from a user, and using a backend provided by the above repo, do an image classification.
+
+Additionally, it is ready to be deployed to github pages.
+
+You'll notice there is no branding or anything specific about the model the backend is hooked up to.  However, you will need to update the `exampleMapping` function to map the prediction labels from the backend server to the messages displayed to the user.
+
+### Usage
+
+This repository was built using the tutorial here: https://github.com/gitname/react-gh-pages
+
+You should do the same, except replace the `src` folder with one similar to the one in this repository. 
+
+When you deploy with `npm run deploy` for the first time, you will see there is a `gh-pages` branch with the built code.  You should never need to manually do anything with that branch.  Make your changes in the master branch and whenever you want to deploy to gh-pages, just run `npm run deploy`.
+
+------------------------------------------------------------
+everything below is copied from the create-react-app bootstrapped readme
+------------------------------------------------------------
 
 ## Available Scripts
 
@@ -66,3 +92,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+-----------------------------
+
+
+
+** Maybe we will have FARTE and FARTA and FARC
