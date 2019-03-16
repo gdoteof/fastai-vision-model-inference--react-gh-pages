@@ -14,6 +14,13 @@ Additionally, it is ready to be deployed to github pages.
 
 You'll notice there is no branding or anything specific about the model the backend is hooked up to.  However, you will need to update the `exampleMapping` function to map the prediction labels from the backend server to the messages displayed to the user.
 
+#### Screenshots
+
+|<img src="https://i.imgur.com/ZibC274.jpg" width=300px/>|<img src="https://i.imgur.com/4AcNFmW.jpg" width=300px/>
+|<img src="https://i.imgur.com/s3G5dvm.jpg" width=300px/>|<img src="https://i.imgur.com/sbyjjGi.jpg?" width=300px/>
+
+
+
 ### Usage
 
 This repository was built using the tutorial here: https://github.com/gitname/react-gh-pages
